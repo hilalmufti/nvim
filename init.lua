@@ -1,8 +1,6 @@
 
 vim.opt.nu = true
 
-vim.g.have_nerd_font = true 
-
 vim.opt.mouse = 'a'
 
 vim.opt.clipboard = 'unnamedplus'
@@ -72,6 +70,18 @@ require("lazy").setup({
   'nvim-telescope/telescope.nvim',
   'github/copilot.vim',
   "Olical/conjure",
+  'nvim-tree/nvim-web-devicons',
+  {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("nvim-tree").setup {}
+    end,
+  },
   {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
   {
     'VonHeikemen/lsp-zero.nvim',
@@ -116,3 +126,8 @@ end)
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
 lsp.setup()
+
+require'nvim-web-devicons'.get_icons()
+
+local nvim_tree = require'nvim-tree'
+nvim_tree.setup()
